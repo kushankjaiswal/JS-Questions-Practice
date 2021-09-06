@@ -1,0 +1,5 @@
+#nm {
+    border: '2px solid';
+    resize: horizontal;
+    overflow: auto;
+}
