@@ -14,6 +14,16 @@ function saveInput() {
 }
 const processChange = debounce(() => saveInput());
 
+// const debounce = (func, delay) => {
+//   let timeoutId;
+//   return (...args) => {
+//     clearTimeout(timeoutId);
+//     timeoutId = setTimeout(() => {
+//       func.apply(this, args);
+//     }, delay);
+//   };
+// };
+
   //It can be used on an input 
 //   <input type="text" onkeyup="processChange()" />
 

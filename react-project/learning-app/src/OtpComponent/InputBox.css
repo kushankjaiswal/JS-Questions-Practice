@@ -1,0 +1,13 @@
+input {
+  border: 2px solid #ccc; /* default border */
+  padding: 8px;
+  border-radius: 4px;
+  transition: border-color 0.3s ease;
+  width: 40px;
+  height: 40px;
+}
+
+input:focus {
+  border-color: blue;
+  outline: none; /* removes default browser outline */
+}

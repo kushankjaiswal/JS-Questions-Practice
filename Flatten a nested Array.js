@@ -43,3 +43,18 @@ function flatten(numArr) {
 
 
 console.log(flatten(numArr))
+
+const res = [];
+function flat(arr) {
+    if(!Array.isArray(arr)){
+        res.push(arr);
+        return;
+    }
+
+    for(const a of arr) {
+        flat(a)
+    }
+    return res;
+}
+
+console.log(flat([1, 2, 3, [4, [5, [6]]]]))

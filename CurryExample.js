@@ -1,6 +1,6 @@
 function curry(func) {
     return function curried(...args) {
-        if(args.length >= func.length) {
+        if (args.length >= func.length) {
             return func.apply(this, args);
         } else {
             return function (...args2) {
@@ -13,13 +13,13 @@ function curry(func) {
 // console.log(curry(a,b,c))
 // console.log(curry(a)(b)(c));
 
-// function sum(a) {
-//     return function(b) {
-//         if(b) {
-//             return sum(a+b);
-//         }
-//         return a;
-//     }
-// }
+function sum(a) {
+    return function (b) {
+        if (b) {
+            return sum(a + b);
+        }
+        return a;
+    }
+}
 
-console.log(sum(1,2,3,4,5,6,7,8,9))
+sum(1, 2, 3, 4, 5, 6, 7, 8, 9)
