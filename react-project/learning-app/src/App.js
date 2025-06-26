@@ -1,14 +1,9 @@
-import logo from './logo.svg';
-import './App.css';
-import OtpComponent from './OtpComponent';
-import Stopwatch from './StopWatch';
+import logo from "./logo.svg";
+import "./App.css";
+import OtpComponent from "./OtpComponent";
+import Stopwatch from "./StopWatch";
 
 function App() {
-  const handleOtpComplete = (otp) => {
-    console.log("OTP entered:", otp);
-    // Call API / Submit form / Validate OTP here
-  };
-
   return (
     <div className="App">
       {/* <header className="App-header">
@@ -26,8 +21,8 @@ function App() {
         </a>
       </header> */}
       {/* <h2> Implement an OTP input here!</h2>
-      <OtpComponent otpLength={4} onOtpComplete={handleOtpComplete} /> */}
-      <Stopwatch/>
+      <OtpComponent otpLength={4}/> */}
+      <Stopwatch />
     </div>
   );
 }

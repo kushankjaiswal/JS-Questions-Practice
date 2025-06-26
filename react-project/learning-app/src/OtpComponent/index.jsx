@@ -1,9 +1,14 @@
 import { useRef, useState, useEffect } from "react";
 import InputBox from "./InputBox";
 
-const OtpComponent = ({ otpLength = 4, onOtpComplete }) => {
+const OtpComponent = ({ otpLength = 4 }) => {
   const [otpValues, setOtpValues] = useState(Array(otpLength).fill(""));
   const inputRefs = useRef([]);
+
+  const onOtpComplete = (otp) => {
+    console.log("OTP entered:", otp);
+    // Call API / Submit form / Validate OTP here
+  };
 
   const handleChange = (value, index) => {
     if (!/^\d$/.test(value)) return;
