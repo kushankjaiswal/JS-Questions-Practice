@@ -1,74 +1,90 @@
-import "./styles.css";
-import { useState, useEffect, useRef, Fragment } from "react";
+// // ES 6 Feature
 
-const StopwatchTimer = ({ timer }) => {
-  const formatTime = (timer) => {
-    const minutes = Math.floor(timer / 60000);
-    const seconds = Math.floor((timer % 60000) / 1000);
-    const millisecond = Math.floor((timer % 1000) / 10);
+// const radius = 20;
 
-    return `${minutes} : ${seconds} : ${millisecond}`;
-  };
+// const shape = {
+//   abc() {
+//     console.log(this.radius);
+//   },
+//   diameter() {
+//     return this.radius * 2;
+//   },
+//   perimeter: () => 2 * Math.PI * this.radius,
+// };
 
-  return (
-    <Fragment>
-      <h1 data-testid="stop_watch_timer">{formatTime(timer)}</h1>
-    </Fragment>
-  );
-};
+// // console.log(shape.diameter()); // 20
+// console.log(shape.abc());
 
-const StartButton = (props) => (
-  <button type="button" data-testid="start_button" {...props}>
-    Start / Stop
-  </button>
-);
+// console.log(typeof shape.diameter());
 
-// const PauseButton = (props) => (
-//   <button type="button" data-testid="pause_button" {...props}>
-//     Pause
-//   </button>
-// );
+// function Person(firstName, lastName) {
+//   this.firstName = firstName;
+//   this.lastName = lastName;
+//   // this.getFullName = function () {
+//   //   return `${this.firstName} ${this.lastName}`;
+//   // };
+// }
 
-const ResetButton = (props) => (
-  <button type="button" data-testid="reset_button" {...props}>
-    Reset
-  </button>
-);
+// const member = new Person("Lydia", "Hallie");
 
-export default function App() {
-  //mm:ss:m
-  const [timer, setTimer] = useState(0);
-  const [isRunnning, setIsRunnning] = useState(false);
-  const intervalRef = useRef(null);
+// Person.prototype.getFullName = function () {
+//   return `${this.firstName} ${this.lastName}`;
+// };
 
-  const toggleStartStop = () => {
-    setIsRunnning((prev) => !prev);
-  };
+// console.log(member.getFullName());
+const eventList = [
+  {
+    eventName: "abc",
+    status: "completed",
+  },
+  {
+    eventName: "def",
+    status: "live",
+  },
+  {
+    eventName: "ghi",
+    status: "live",
+  },
+  {
+    eventName: "jkl",
+    status: "upcoming",
+  },
+];
 
-  const reset = () => {
-    setIsRunnning(false);
-    setTimer(0);
-    clearInterval(intervalRef.current);
-  };
+const order = ["live", "upcoming", "completed"];
 
-  useEffect(() => {
-    if (isRunnning) {
-      intervalRef.current = setInterval(() => {
-        setTimer((prev) => prev + 10);
-      }, 10);
-    } else {
-      clearInterval(intervalRef.current);
-    }
-
-    return () => clearInterval(intervalRef.current);
-  }, [isRunnning]);
-
-  return (
-    <div className="App">
-      <h1>Stopwatch</h1>
-      <StopwatchTimer timer={timer}></StopwatchTimer>
-      <StartButton onClick={toggleStartStop} />
-      <ResetButton onClick={reset} />
-    </div>
-  );
+function sortByStatusOrder(events, order) {
+  return events.sort((a, b) => {
+    return order.indexOf(a.status) - order.indexOf(b.status);
+  });
+  let finalArr = [];
+  for (let i = 0; i < order.length; i++) {
+    events?.map((event) => {
+      if (event?.status === order[i]) {
+        finalArr.push(event);
+      }
+    });
+  }
+  return finalArr;
 }
+
+console.log(sortByStatusOrder(eventList, order));
+
+// [
+//   {
+//     "eventName": "def",
+//     "status": "live"
+//   },
+//   {
+//     "eventName": "ghi",
+//     "status": "live"
+//   },
+//   {
+//     "eventName": "jkl",
+//     "status": "upcoming"
+//   },
+//   {
+//     "eventName": "abc",
+//     "status": "completed"
+//   }
+// ]
